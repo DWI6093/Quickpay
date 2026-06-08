@@ -1,0 +1,47 @@
+name: Desafio 02_Pull_Request_Abraham
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+
+  datos-push:
+
+    if: github.event_name == 'push'
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Mostrar datos Push
+        run: |
+          echo "Mi nombre es César Abraham López Aguilar"
+          echo "Mensaje: ${{ github.event.head_commit.message }}"
+          echo "Autor: ${{ github.event.head_commit.author.name }}"
+          echo "ID: ${{ github.sha }}"
+          echo "URL: https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
+          echo "Rama: ${{ github.ref_name }}"
+          echo "Repositorio: ${{ github.repository }}"
+  datos-pr:
+
+    if: github.event_name == 'pull_request'
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Mostrar datos Pull Request
+        run: |
+          echo "Mi nombre es César Abraham López Aguilar"
+          echo "Destino: ${{ github.event.pull_request.base.ref }}"
+          echo "Origen: ${{ github.event.pull_request.head.ref }}"
+          echo "Titulo: ${{ github.event.pull_request.title }}"
+          echo "Contenido: ${{ github.event.pull_request.body }}"
+          echo "Estado: ${{ github.event.pull_request.state }}"
+          echo "Fusionado: ${{ github.event.pull_request.merged }}"
