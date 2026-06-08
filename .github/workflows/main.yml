@@ -1,0 +1,21 @@
+name: Desafio2_Abraham
+on:
+  push: 
+    branches:
+      - main
+
+jobs:
+  datos-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Mostrar datos del Push
+        run: |
+          echo "My first Push"
+          echo "Mi nombre es Cesar Abraham lópez Aguilar"
+          echo "Autor: ${{github.event.head_commit.author.name}}"
+          echo "Mensaje: ${{github.event.head_commit.message}}"
+           echo "ID: ${{ github.sha }}"
+          echo "URL: https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
+          echo "Rama: ${{ github.ref_name }}"
+          echo "Repositorio: ${{ github.repository }}"
